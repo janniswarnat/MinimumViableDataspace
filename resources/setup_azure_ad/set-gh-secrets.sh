@@ -12,3 +12,4 @@ $gh secret set COMMON_RESOURCE_GROUP --body "$(terraform output -raw COMMON_RESO
 $gh secret set COMMON_RESOURCE_GROUP_LOCATION --body "$(terraform output -raw COMMON_RESOURCE_GROUP_LOCATION)"
 $gh secret set TERRAFORM_STATE_CONTAINER --body "$(terraform output -raw TERRAFORM_STATE_CONTAINER)"
 $gh secret set TERRAFORM_STATE_STORAGE_ACCOUNT --body "$(terraform output -raw TERRAFORM_STATE_STORAGE_ACCOUNT)"
+$gh secret set ACR_NAME --body "$(terraform output -raw ACR_NAME)"
