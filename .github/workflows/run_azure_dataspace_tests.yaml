@@ -70,7 +70,11 @@ jobs:
 
       - name: 'Run Dataspace in Docker'
         run: |
-          docker-compose -f docker/docker-compose.yml up --build
+          docker-compose -f docker/docker-compose.yml up --build --wait
+
+      - name: 'Show Docker logs'
+        run: |
+          docker-compose -f docker/docker-compose.yml logs
 
       - name: 'Seed Credentials and master data'
         run: |
