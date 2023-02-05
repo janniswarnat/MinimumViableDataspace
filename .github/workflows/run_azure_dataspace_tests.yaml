@@ -72,7 +72,12 @@ jobs:
         run: |
           docker-compose -f docker/docker-compose.yml up --build --detach
 
-      - name: Sleep for 30 seconds
+      - name: 'Show env'
+        if: always()
+        run: |
+          docker inspect registration-service
+
+      - name: Sleep for 15 seconds
         run: sleep 15s
         shell: bash
 
