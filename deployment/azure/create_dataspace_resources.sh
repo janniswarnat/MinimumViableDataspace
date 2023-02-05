@@ -11,6 +11,7 @@ dataspace_data="$1"
 vault_name=$(echo "$dataspace_data" | jq -r '.vault_name')
 dataspace_did_host=$(echo "$dataspace_data" | jq -r '.dataspace_did_host')
 gaiax_did_host=$(echo "$dataspace_data" | jq -r '.gaiax_did_host')
+echo "vault name was set to ${vault_name}"
 
 echo "- Verify DID endpoints (GAIA-X Authority and Dataspace) are available:"
 curl -sSl --fail "https://$gaiax_did_host/.well-known/did.json" | jq '.id'
@@ -18,6 +19,7 @@ curl -sSl --fail "https://$dataspace_did_host/.well-known/did.json" | jq '.id'
 echo
 
 echo "- Update Docker-compose environment variables for RegistrationService"
+set
 env_file="docker/reg.env"
 $sed "s/EDC_VAULT_NAME=\".*\"/EDC_VAULT_NAME=\"$vault_name\"/g" $env_file
 $sed "s/EDC_VAULT_CLIENTSECRET=\".*\"/EDC_VAULT_CLIENTSECRET=\"${APP_CLIENT_SECRET}\"/g" $env_file
