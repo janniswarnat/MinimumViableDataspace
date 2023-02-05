@@ -70,21 +70,21 @@ jobs:
 
       - name: 'Run Dataspace in Docker'
         run: |
-          docker-compose -f docker/docker-compose.yml up --build --detach
+          docker-compose -f docker/docker-compose.yml up --build --wait
 
       - name: 'Show env'
         if: always()
         run: |
           docker inspect registration-service
-
-      - name: Sleep for 300 seconds
-        run: sleep 300s
-        shell: bash
+#
+#      - name: Sleep for 300 seconds
+#        run: sleep 300s
+#        shell: bash
 
       - name: 'Show Docker logs'
         if: always()
         run: |
-          docker-compose -f docker/docker-compose.yml logs registration-service
+          docker-compose -f docker/docker-compose.yml logs
 
       - name: 'Seed Credentials and master data'
         run: |
