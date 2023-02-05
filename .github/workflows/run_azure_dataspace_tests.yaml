@@ -77,8 +77,8 @@ jobs:
         run: |
           docker inspect registration-service
 
-      - name: Sleep for 15 seconds
-        run: sleep 15s
+      - name: Sleep for 300 seconds
+        run: sleep 300s
         shell: bash
 
       - name: 'Show Docker logs'
